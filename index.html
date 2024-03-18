@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+
+
+<script type="text/babel">
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    // 1. Ini bisa pake sampel format JSX
+    // root.render( 
+    //     <>
+       
+    //     <h1 className="content"> Harusnya foto </h1>
+    //     <p onClick={e => alert('ok!')}>Belajar React</p>
+    //     </>
+    //     );
+
+    // 2. Membuat Komponen tunggal
+    // function Header(){
+    //     return  <h1 className="heading"> Belajar React Bareng GOPAN😍 </h1>
+    // }
+
+    // root.render(<Header/>);
+
+    // 3. Komponen Bersarang
+    // function Header(){
+    //     return  <h1 className="heading"> Belajar React Bareng GOPAN😍 </h1>
+    // }
+
+    // function HomePage(){
+    //     return (
+    //         <>
+    //         <Header/>
+    //         </>
+    //     )
+    // }
+
+    // root.render(<HomePage/>);
+
+    // 4. Menampilkan data menggunakan Props
+    // function Header(props){
+    //     return  <h1>Hallo, {props.name} ✌️</h1>;
+    // }
+
+    // function HomePage(){
+    //     return (
+    //         <>
+    //             <Header name="Indo Taichen"/>
+    //             <Header name="Irfan"/>
+    //         </>
+    //     );
+    // }
+
+    // root.render(<HomePage/>);
+
+    // 5. Props Refactor
+    // Menggunakan destructuring, tenary operator
+    // function Header({name}){
+    //     return <h1>Hallo {name ? name: 'Indo Taichen'}</h1>
+    // }
+
+    // function HomePage(){
+    //     return (
+    //         <>
+    //             <Header />
+    //             <Header name = 'Irfan'/>
+    //         </>
+    //     );
+    // }
+
+    // root.render(<HomePage />);
+
+    // 6. Menampilkan elemen menggunakan perulangan
+    // Untuk memanipulasi data dan menampilkan elemen UI yang identik
+    //  secara style, tapi berbeda informasi untuk contoh pakai array.map
+
+    // function Header({name}){
+    //     return <h1>Hallo {name ? name: 'Indo Taichen'}</h1>
+    // }
+
+    // function HomePage(){
+    //     const students = ['Irfan', 'Hadi', 'Tobi'];
+    //     return (
+    //         <>
+    //             <Header name="GOPAN😍"/>
+    //             <ul>
+    //                 {
+    //                     students.map((student) => (
+    //                         <li key={student}>{student}</li>
+    //                     ))
+    //                 }
+    //             </ul>
+
+
+    //         </>
+    //     );
+    // }
+
+    // root.render(<HomePage />);
+
+    // 7. Menambah Interaktivitas dengan state
+    // Dalam react, daya yang sering berubah seiring waktu disebut state
+    // Kita bisa menambahkan state untuk komponen manapun, dan diubah ketika kita butuhkan
+    // Untuk menambahkan interaktivitas pada element, React menggunakan state dan juga event handler
+
+    // React punya serangkaian function yang disebut dengan Hooks, yang memungkinkan kita menambahkan logic pada komponen kita
+    // Salah satu hooks bisa digunakan untuk mengelola state adalah setState(), yang mengembalikan nilai berupa array, dan bisa kita akses menggunakan teknik destructuing
+
+    // Elemen pertama pada array adalah nilai statenya, dan elemen kedua merupakan function untuk mengubah nilainya
+    //  Nama function boleh apa aja tapi biasanya diawal dengan set lalu nama nilai statenya
+    // Kita bisa memberi nilai awal pada nilai statenya dengan mengisi argumen pada useState()
+
+
+    function Header({name}){
+           return <h1>Hallo {name ? name: 'Indo Taichen'}</h1>
+       }
+
+       function HomePage(){
+           const students = ['Irfan', 'Hadi', 'Tobi'];
+           const[likes, setLikes] = React.useState(0);
+
+           function handleClick(){
+            setLikes(likes +1);
+           }
+
+           return (
+               <>
+                   <Header name="GOPAN😍"/>
+                   <ul>
+                       {
+                           students.map((student) => (
+                               <li key={student}>{student}</li>
+                           ))
+                       }
+                   </ul>
+                   <button onClick={handleClick}>Like ({likes})</button>
+
+
+               </>
+           );
+       }
+
+    root.render(<HomePage />);
+
+
+</script>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>
